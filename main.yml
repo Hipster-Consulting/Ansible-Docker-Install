@@ -2,10 +2,8 @@
 # This playbook deploys the whole application stack in this site.
 
 - name: Installing Docker on Server
-  hosts: all
-  remote_user: vmadmin
-  become_method: sudo
-  become_user: root
+  hosts: "{{ hosts | default('all') }}"
+  remote_user: '{{ remote_user }}'
 
   roles:
     - docker
